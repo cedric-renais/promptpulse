@@ -1,3 +1,24 @@
-@use './theme' as theme;
-@use './function' as function;
+@use './theme';
+@use './function';
 @use './mixins';
+
+.u-head-text {
+  margin-block-start: function.toRem(20);
+  font-size: function.toRem(48);
+  font-weight: 800;
+  line-height: 1.15;
+
+  @media (min-width: 640px) {
+    font-size: function.toRem(60);
+  }
+}
+
+.u-desc-text {
+  margin-block-start: function.toRem(20);
+  font-size: function.toRem(18);
+  max-inline-size: function.toRem(672);
+
+  @media (min-width: 640px) {
+    font-size: function.toRem(20);
+  }
+}

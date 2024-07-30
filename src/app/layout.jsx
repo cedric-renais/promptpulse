@@ -10,7 +10,8 @@ export const RootLayout = ({ children }) => {
   return (
     <html lang="fr">
       <body>
-        <main>{children}</main>
+        <div className="main" />
+        <main className="app">{children}</main>
       </body>
     </html>
   );
