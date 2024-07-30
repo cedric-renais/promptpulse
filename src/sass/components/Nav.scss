@@ -74,4 +74,10 @@
     padding-inline: function.toRem(2);
     padding-block: function.toRem(2);
   }
+
+  &__sign-in {
+    @include mixins.flex-center;
+    @include mixins.button-outline-ruby;
+    color: theme.$iris-12;
+  }
 }

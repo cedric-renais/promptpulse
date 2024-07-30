@@ -1,12 +1,31 @@
 'use client';
 
 import '@sass/components/Nav.scss';
-import { signOut } from 'next-auth/react';
+import { getProviders, signIn, signOut } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 const Nav = () => {
+  // Indique si l'utilisateur est connecté ou non (à remplacer par la vraie valeur)
   const isUserLoggedIn = true;
+
+  // Liste des fournisseurs d'authentification
+  const [providers, setProviders] = useState(null);
+
+  // Récupère la liste des fournisseurs d'authentification
+  useEffect(() => {
+    const fetchProviders = async () => {
+      const response = await getProviders();
+
+      // Met à jour la liste des fournisseurs d'authentification
+      setProviders(response);
+    };
+
+    // Appelle la fonction pour récupérer les fournisseurs d'authentification
+    fetchProviders();
+  }, []);
+
   return (
     <nav className="nav">
       <Link className="nav__link" href="/">
@@ -41,7 +60,19 @@ const Nav = () => {
             </Link>
           </div>
         ) : (
-          <></>
+          <>
+            {providers &&
+              Object.values(providers).map((provider) => (
+                <button
+                  className="nav__sign-in"
+                  type="button"
+                  key={provider.name}
+                  onClick={() => signIn(provider.id)}
+                >
+                  Connecte-toi avec Google
+                </button>
+              ))}
+          </>
         )}
       </div>
     </nav>
