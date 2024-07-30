@@ -1,6 +1,7 @@
 @use '../base/' as theme;
 @use '../base/function';
 @use '../base/mixins';
+@use '../base/variables' as var;
 
 .nav {
   display: flex;
@@ -8,10 +9,34 @@
   inline-size: 100%;
   margin-block-end: function.toRem(64);
   padding-block-start: function.toRem(12);
+  padding-inline: function.toRem(8);
 
   &__link {
     @include mixins.flex-center;
+    @include mixins.iris-focus;
     gap: function.toRem(8);
+    border: 1px solid transparent;
+    background: theme.$iris-12;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    padding-inline: function.toRem(4);
+    padding-block: function.toRem(4);
+
+    &:hover {
+      background: theme.$linear-gradient;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    &:focus {
+      background: theme.$linear-gradient;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      border-radius: function.toRem(8);
+    }
   }
 
   &__logo {
@@ -68,16 +93,103 @@
     }
   }
 
+  &__profile {
+    @include mixins.flex-center;
+    border: 1px solid transparent;
+    @include mixins.iris-focus;
+    &:focus {
+      border-radius: 50%;
+    }
+  }
+
+  &__profile-mobile {
+    @include mixins.flex-center;
+    border: 1px solid transparent;
+    @include mixins.iris-focus;
+    &:focus {
+      border-radius: 50%;
+    }
+  }
+
   &__profile-image {
+    @include mixins.iris-hover;
     border-radius: 50%;
     border: 1px solid theme.$iris-7;
     padding-inline: function.toRem(2);
     padding-block: function.toRem(2);
+    transition: var.$transition;
+    cursor: pointer;
   }
 
   &__sign-in {
     @include mixins.flex-center;
     @include mixins.button-outline-ruby;
     color: theme.$iris-12;
+  }
+
+  //////////////////
+  // Nav - Mobile //
+  //////////////////
+
+  &__mobile {
+    display: flex;
+    position: relative;
+
+    @media (min-width: 640px) {
+      display: none;
+    }
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    flex-direction: column;
+    inline-size: 100%;
+    min-inline-size: function.toRem(210);
+    margin-block-start: function.toRem(12);
+    padding-block: function.toRem(20);
+    padding-inline: function.toRem(20);
+    border: 1px solid theme.$iris-7;
+    background-color: theme.$iris-3;
+    border-radius: function.toRem(8);
+    gap: function.toRem(8);
+  }
+
+  &__dropdown-link {
+    @include mixins.iris-focus;
+    font-size: function.toRem(14);
+    font-weight: 500;
+    border: 1px solid transparent;
+    border-radius: function.toRem(8);
+    padding-inline: function.toRem(4);
+    padding-block: function.toRem(2);
+    transition: var.$transition;
+
+    &:hover {
+      color: theme.$iris-11;
+    }
+  }
+
+  &__dropdown-sign-out {
+    @include mixins.flex-center;
+    @include mixins.button-outline-ruby;
+    margin-block-start: function.toRem(16);
+    inline-size: 100%;
+    color: theme.$iris-12;
+    font-weight: 600;
+    background-color: theme.$ruby-3;
+    border: 1px solid theme.$ruby-7;
+
+    &:hover {
+      color: theme.$ruby-12;
+    }
+
+    &:focus {
+      color: theme.$ruby-12;
+    }
   }
 }

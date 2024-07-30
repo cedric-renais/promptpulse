@@ -22,7 +22,9 @@
     background-color: theme.$iris-4;
     border: 1px solid theme.$iris-8;
   }
+}
 
+@mixin iris-focus {
   &:focus {
     outline: none;
     border: 1px solid theme.$iris-8;
@@ -35,7 +37,9 @@
     background-color: theme.$ruby-4;
     border: 1px solid theme.$ruby-8;
   }
+}
 
+@mixin ruby-focus {
   &:focus {
     outline: none;
     border: 1px solid theme.$ruby-8;
@@ -47,6 +51,7 @@
 @mixin button-iris {
   @include button;
   @include iris-hover;
+  @include iris-focus;
   background-color: theme.$iris-3;
   border: 1px solid theme.$iris-7;
   font-size: function.toRem(14);
@@ -55,6 +60,7 @@
 @mixin button-outline-ruby {
   @include button;
   @include ruby-hover;
+  @include ruby-focus;
   background-color: transparent;
   border: 1px solid theme.$iris-7;
   font-size: function.toRem(14);
