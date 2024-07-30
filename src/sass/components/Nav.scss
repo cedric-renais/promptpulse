@@ -1,0 +1,77 @@
+@use '../base/' as theme;
+@use '../base/function';
+@use '../base/mixins';
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  inline-size: 100%;
+  margin-block-end: function.toRem(64);
+  padding-block-start: function.toRem(12);
+
+  &__link {
+    @include mixins.flex-center;
+    gap: function.toRem(8);
+  }
+
+  &__logo {
+    object-fit: contain;
+  }
+
+  &__logo-text {
+    font-size: function.toRem(18);
+    letter-spacing: 0.025em;
+    font-weight: 600;
+
+    @media (max-width: 640px) {
+      display: none;
+    }
+  }
+
+  ///////////////////
+  // Nav - Desktop //
+  ///////////////////
+
+  &__desktop {
+    display: none;
+
+    @media (min-width: 640px) {
+      display: flex;
+    }
+  }
+
+  &__user-actions {
+    display: flex;
+    gap: function.toRem(12);
+
+    @media (min-width: 768px) {
+      gap: function.toRem(20);
+    }
+  }
+
+  &__create-post {
+    @include mixins.flex-center;
+    @include mixins.button-iris;
+  }
+
+  &__sign-out {
+    @include mixins.flex-center;
+    @include mixins.button-outline-ruby;
+    color: theme.$iris-12;
+
+    &:hover {
+      color: theme.$ruby-12;
+    }
+
+    &:focus {
+      color: theme.$ruby-12;
+    }
+  }
+
+  &__profile-image {
+    border-radius: 50%;
+    border: 1px solid theme.$iris-7;
+    padding-inline: function.toRem(2);
+    padding-block: function.toRem(2);
+  }
+}

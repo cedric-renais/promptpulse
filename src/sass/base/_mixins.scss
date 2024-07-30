@@ -1,7 +1,61 @@
 @use '../base/theme';
+@use '../base/function';
+@use '../base/variables' as var;
 
 @mixin flex-center {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@mixin button {
+  border-radius: var.$pill;
+  padding-block: function.toRem(6);
+  padding-inline: function.toRem(20);
+  transition: var.$transition;
+  text-align: center;
+  cursor: pointer;
+}
+
+@mixin iris-hover {
+  &:hover {
+    background-color: theme.$iris-4;
+    border: 1px solid theme.$iris-8;
+  }
+
+  &:focus {
+    outline: none;
+    border: 1px solid theme.$iris-8;
+    box-shadow: var.$shadow-iris;
+  }
+}
+
+@mixin ruby-hover {
+  &:hover {
+    background-color: theme.$ruby-4;
+    border: 1px solid theme.$ruby-8;
+  }
+
+  &:focus {
+    outline: none;
+    border: 1px solid theme.$ruby-8;
+    background-color: theme.$ruby-4;
+    box-shadow: var.$shadow-ruby;
+  }
+}
+
+@mixin button-iris {
+  @include button;
+  @include iris-hover;
+  background-color: theme.$iris-3;
+  border: 1px solid theme.$iris-7;
+  font-size: function.toRem(14);
+}
+
+@mixin button-outline-ruby {
+  @include button;
+  @include ruby-hover;
+  background-color: transparent;
+  border: 1px solid theme.$iris-7;
+  font-size: function.toRem(14);
 }

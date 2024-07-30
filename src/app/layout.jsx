@@ -1,4 +1,5 @@
-import '@/sass/globals.scss';
+import Nav from '@components/Nav';
+import '@sass/globals.scss';
 
 export const metadata = {
   title: 'PromptPulse',
@@ -11,7 +12,10 @@ export const RootLayout = ({ children }) => {
     <html lang="fr">
       <body>
         <div className="main" />
-        <main className="app">{children}</main>
+        <main className="app">
+          <Nav />
+          {children}
+        </main>
       </body>
     </html>
   );

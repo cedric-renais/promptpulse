@@ -1,0 +1,12 @@
+@use '../base/theme';
+@use '../base/function';
+
+// Button
+$pill: 9999px;
+
+// Box Shadow
+$shadow-iris: 0 0 0 3.5px rgba(theme.$iris-8, 0.5);
+$shadow-ruby: 0 0 0 3.5px rgba(theme.$ruby-8, 0.5);
+
+// Transition
+$transition: all 0.2s ease-in-out;
