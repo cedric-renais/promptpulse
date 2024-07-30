@@ -1,0 +1,13 @@
+@use './base/' as theme;
+@use './base/function' as function;
+@use './base/mixins';
+
+main {
+  display: flex;
+  justify-content: center;
+  inline-size: 100vw;
+  min-block-size: 100vh;
+  padding-block-start: function.toRem(120);
+  padding-block-end: function.toRem(160);
+  padding-inline: function.toRem(24);
+}

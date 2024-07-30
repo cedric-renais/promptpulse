@@ -1,0 +1,8 @@
+@use 'sass:math';
+// Convertit une valeur en pixel en rem.
+@function toRem($px) {
+  @if not $px {
+    @error 'Missing argument: `$px`.';
+  }
+  @return math.div($px, 16) + rem;
+}
