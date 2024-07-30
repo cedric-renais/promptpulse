@@ -4,7 +4,7 @@ import '@sass/components/Nav.scss';
 import { getProviders, signIn, signOut } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const Nav = () => {
   // Indique si l'utilisateur est connecté ou non (à remplacer par la vraie valeur)
@@ -15,6 +15,7 @@ const Nav = () => {
 
   // Toggle le dropdown du menu mobile
   const [toggleDropdown, setToggleDropdown] = useState(false);
+  const buttonRef = useRef(null);
 
   // Récupère la liste des fournisseurs d'authentification
   useEffect(() => {
@@ -82,14 +83,29 @@ const Nav = () => {
       {/* Nav - Mobile */}
       <div className="nav__mobile">
         {isUserLoggedIn ? (
-          <div className="nav__profile-mobile" tabIndex="0">
+          <div
+            className="nav__profile-mobile"
+            tabIndex="0"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded={toggleDropdown}
+            onClick={() => setToggleDropdown((prevState) => !prevState)}
+            // Ouvre le dropdown si le focus est sur l'élément
+            onFocus={() => setToggleDropdown(true)}
+            // Ferme le dropdown si le focus sort de l'élément
+            onBlur={(event) => {
+              if (!buttonRef.current.contains(event.relatedTarget)) {
+                setToggleDropdown(false);
+              }
+            }}
+            ref={buttonRef}
+          >
             <Image
               className="nav__profile-image"
               src="/assets/images/user.svg"
               alt="Image de profil"
               width={35}
               height={35}
-              onClick={() => setToggleDropdown((prevState) => !prevState)}
             />
             {toggleDropdown && (
               <div className="nav__dropdown">
