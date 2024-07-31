@@ -1,14 +1,14 @@
 'use client';
 
 import '@sass/components/Nav.scss';
-import { getProviders, signIn, signOut } from 'next-auth/react';
+import { getProviders, signIn, signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 
 const Nav = () => {
   // Indique si l'utilisateur est connecté ou non (à remplacer par la vraie valeur)
-  const isUserLoggedIn = true;
+  const { data: session } = useSession();
 
   // Liste des fournisseurs d'authentification
   const [providers, setProviders] = useState(null);
@@ -45,7 +45,7 @@ const Nav = () => {
 
       {/* Nav - Desktop */}
       <div className="nav__desktop">
-        {isUserLoggedIn ? (
+        {session?.user ? (
           <div className="nav__user-actions">
             <Link className="nav__create-post" href="/create-post">
               Pulse un prompt
@@ -56,8 +56,8 @@ const Nav = () => {
             <Link className="nav__profile" href="/profile">
               <Image
                 className="nav__profile-image"
-                src="/assets/images/user.svg"
-                alt="Image de profil"
+                src={session.user.image}
+                alt={`Image de profil de ${session.user.name}`}
                 width={35}
                 height={35}
               />
@@ -82,7 +82,7 @@ const Nav = () => {
 
       {/* Nav - Mobile */}
       <div className="nav__mobile">
-        {isUserLoggedIn ? (
+        {session?.user ? (
           <div
             className="nav__profile-mobile"
             tabIndex="0"

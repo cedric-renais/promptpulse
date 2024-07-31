@@ -99,8 +99,19 @@
 
   &__profile {
     @include mixins.flex-center;
-    border: 1px solid transparent;
     @include mixins.iris-focus;
+    border: 1px solid transparent;
+    padding-inline: function.toRem(2);
+    padding-block: function.toRem(2);
+
+    @media (min-width: 640px) {
+      @include mixins.iris-hover;
+      &:hover {
+        border: 1px solid theme.$iris-7;
+        border-radius: 50%;
+      }
+    }
+
     &:focus {
       border-radius: 50%;
     }
@@ -108,19 +119,18 @@
 
   &__profile-mobile {
     @include mixins.flex-center;
+    @include mixins.iris-focus;
     border: 1px solid transparent;
     padding-inline: function.toRem(2);
     padding-block: function.toRem(2);
-    @include mixins.iris-focus;
+
     &:focus {
       border-radius: 50%;
     }
   }
 
   &__profile-image {
-    @include mixins.iris-hover;
     border-radius: 50%;
-    border: 1px solid theme.$iris-7;
     padding-inline: function.toRem(2);
     padding-block: function.toRem(2);
     transition: var.$transition;
@@ -129,7 +139,7 @@
 
   &__sign-in {
     @include mixins.flex-center;
-    @include mixins.button-outline-ruby;
+    @include mixins.button-iris;
     color: theme.$iris-12;
   }
 

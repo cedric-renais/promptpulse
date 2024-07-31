@@ -1,4 +1,5 @@
 import Nav from '@components/Nav';
+import Provider from '@components/Provider';
 import '@sass/globals.scss';
 
 export const metadata = {
@@ -11,11 +12,13 @@ export const RootLayout = ({ children }) => {
   return (
     <html lang="fr">
       <body>
-        <div className="main" />
-        <main className="app">
-          <Nav />
-          {children}
-        </main>
+        <Provider>
+          <div className="main" />
+          <main className="app">
+            <Nav />
+            {children}
+          </main>
+        </Provider>
       </body>
     </html>
   );
