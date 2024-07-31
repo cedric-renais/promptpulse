@@ -29,7 +29,7 @@
       transform: rotate(180deg);
     }
 
-    &:focus {
+    &:focus-visible {
       background-color: theme.$iris-3;
     }
   }
@@ -84,7 +84,7 @@
       color: theme.$ruby-12;
     }
 
-    &:focus {
+    &:focus-visible {
       color: theme.$ruby-12;
     }
   }
@@ -106,7 +106,7 @@
       }
     }
 
-    &:focus {
+    &:focus-visible {
       background-color: theme.$iris-3;
     }
   }
@@ -118,7 +118,7 @@
     padding-inline: function.toRem(2);
     padding-block: function.toRem(2);
 
-    &:focus {
+    &:focus-visible {
       border-radius: 50%;
     }
   }
@@ -198,7 +198,7 @@
       color: theme.$ruby-12;
     }
 
-    &:focus {
+    &:focus-visible {
       color: theme.$ruby-12;
     }
   }

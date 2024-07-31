@@ -68,4 +68,16 @@
   &__description {
     text-align: center;
   }
+
+  &__login {
+    margin-block-start: function.toRem(32);
+    font-size: function.toRem(24);
+
+    span {
+      background: theme.$linear-gradient;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+  }
 }

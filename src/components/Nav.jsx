@@ -39,6 +39,7 @@ const Nav = () => {
           alt="Logo de PromptPulse"
           width={35}
           height={35}
+          priority={true}
         />
         <p className="nav__logo-text">PromptPulse</p>
       </Link>

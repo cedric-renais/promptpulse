@@ -25,7 +25,7 @@
 }
 
 @mixin iris-focus {
-  &:focus {
+  &:focus-visible {
     outline: none;
     border: 1px solid theme.$iris-8;
     box-shadow: var.$shadow-iris;
@@ -40,7 +40,7 @@
 }
 
 @mixin ruby-focus {
-  &:focus {
+  &:focus-visible {
     outline: none;
     border: 1px solid theme.$ruby-8;
     background-color: theme.$ruby-4;
@@ -56,7 +56,7 @@
 }
 
 @mixin jade-focus {
-  &:focus {
+  &:focus-visible {
     outline: none;
     border: 1px solid theme.$jade-8;
     background-color: theme.$jade-4;
@@ -72,7 +72,7 @@
 }
 
 @mixin amber-focus {
-  &:focus {
+  &:focus-visible {
     outline: none;
     border: 1px solid theme.$amber-8;
     background-color: theme.$amber-4;
@@ -88,7 +88,7 @@
 }
 
 @mixin orange-focus {
-  &:focus {
+  &:focus-visible {
     outline: none;
     border: 1px solid theme.$orange-8;
     background-color: theme.$orange-4;
