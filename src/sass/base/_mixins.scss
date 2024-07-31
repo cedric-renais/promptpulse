@@ -64,6 +64,38 @@
   }
 }
 
+@mixin amber-hover {
+  &:hover {
+    background-color: theme.$amber-4;
+    border: 1px solid theme.$amber-8;
+  }
+}
+
+@mixin amber-focus {
+  &:focus {
+    outline: none;
+    border: 1px solid theme.$amber-8;
+    background-color: theme.$amber-4;
+    box-shadow: var.$shadow-amber;
+  }
+}
+
+@mixin orange-hover {
+  &:hover {
+    background-color: theme.$orange-4;
+    border: 1px solid theme.$orange-8;
+  }
+}
+
+@mixin orange-focus {
+  &:focus {
+    outline: none;
+    border: 1px solid theme.$orange-8;
+    background-color: theme.$orange-4;
+    box-shadow: var.$shadow-orange;
+  }
+}
+
 @mixin button-iris {
   @include button;
   @include iris-hover;
@@ -92,7 +124,7 @@
   padding-block: 0.75rem;
   font-size: 0.85rem;
   outline: 0;
-  border: 1px solid theme.$iris-6;
+  border: 1px solid theme.$iris-7;
   background-color: theme.$iris-12;
   font-family: theme.$font-stack;
 }

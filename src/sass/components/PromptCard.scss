@@ -1,0 +1,138 @@
+@use '../base/' as theme;
+@use '../base/function';
+@use '../base/mixins';
+@use '../base/variables' as var;
+
+.prompt-card {
+  flex: 1;
+  break-inside: avoid;
+  border-radius: function.toRem(8);
+  border: 1px solid theme.$iris-7;
+  background-color: theme.$iris-3;
+  padding-inline: function.toRem(16);
+  padding-block-start: function.toRem(16);
+  padding-block-end: function.toRem(16);
+  min-inline-size: function.toRem(300);
+  block-size: auto;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: function.toRem(20);
+  }
+
+  &__user {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: function.toRem(12);
+    cursor: pointer;
+  }
+
+  &__user-image {
+    border-radius: var.$pill;
+    object-fit: contain;
+  }
+
+  &__user-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__user-name {
+    font-weight: 600;
+    background: theme.$linear-gradient;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    text-transform: capitalize;
+  }
+
+  &__user-email {
+    font-size: function.toRem(14);
+    font-weight: 300;
+  }
+
+  &__copy {
+    @include mixins.amber-hover;
+    @include mixins.amber-focus;
+    display: flex;
+    padding-inline: function.toRem(4);
+    padding-block: function.toRem(4);
+    border: 1px solid transparent;
+    border-radius: function.toRem(8);
+    cursor: pointer;
+    transition: var.$transition;
+
+    img {
+      block-size: auto;
+      inline-size: 100%;
+    }
+  }
+
+  &__prompt {
+    margin-block: function.toRem(16);
+    font-size: function.toRem(14);
+  }
+
+  &__tag {
+    @include mixins.iris-focus;
+    font-weight: 300;
+    font-size: function.toRem(14);
+    border: 1px solid transparent;
+    border-radius: var.$pill;
+    inline-size: fit-content;
+    padding-inline: function.toRem(8);
+    padding-block: function.toRem(4);
+    cursor: pointer;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: function.toRem(16);
+  }
+
+  &__edit,
+  &__delete {
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  &__edit {
+    @include mixins.orange-hover;
+    @include mixins.orange-focus;
+    display: flex;
+    inline-size: fit-content;
+    border: 1px solid transparent;
+    border-radius: function.toRem(4);
+    padding-inline: function.toRem(4);
+    padding-block: function.toRem(4);
+    transition: var.$transition;
+
+    img {
+      block-size: auto;
+      inline-size: 100%;
+    }
+  }
+
+  &__delete {
+    @include mixins.ruby-hover;
+    @include mixins.ruby-focus;
+    display: flex;
+    inline-size: fit-content;
+    border: 1px solid transparent;
+    border-radius: function.toRem(4);
+    padding-inline: function.toRem(4);
+    padding-block: function.toRem(4);
+    transition: var.$transition;
+
+    img {
+      block-size: auto;
+      inline-size: 100%;
+    }
+  }
+}

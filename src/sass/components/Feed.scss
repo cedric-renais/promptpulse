@@ -1,0 +1,45 @@
+@use '../base/' as theme;
+@use '../base/function';
+@use '../base/mixins';
+@use '../base/variables' as var;
+
+.feed {
+  @include mixins.flex-center;
+  margin-block-start: function.toRem(64);
+  margin-inline: auto;
+  max-inline-size: function.toRem(800);
+  flex-direction: column;
+  gap: function.toRem(8);
+
+  &__form {
+    @include mixins.flex-center;
+    position: relative;
+    inline-size: 100%;
+  }
+
+  &__label {
+    inline-size: 100%;
+  }
+
+  &__input {
+    @include mixins.iris-focus;
+    display: block;
+    inline-size: 100%;
+    border-radius: function.toRem(6);
+    border: 1px solid theme.$iris-7;
+    background-color: theme.$iris-12;
+    padding-block: function.toRem(10);
+    padding-inline-start: function.toRem(20);
+    padding-inline-end: function.toRem(48);
+    font-size: function.toRem(14);
+    font-weight: 500;
+  }
+
+  &__prompt-card-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: function.toRem(16);
+    margin-block-start: function.toRem(64);
+    padding-block: function.toRem(32);
+  }
+}

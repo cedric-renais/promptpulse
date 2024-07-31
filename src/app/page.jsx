@@ -1,3 +1,5 @@
+import Feed from '@components/Feed';
+
 const Home = () => {
   return (
     <section className="home">
@@ -10,6 +12,7 @@ const Home = () => {
         PromptPulse est une plateforme où tu peux découvrir, créer et partager
         des prompts
       </p>
+      <Feed />
     </section>
   );
 };
