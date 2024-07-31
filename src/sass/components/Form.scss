@@ -1,0 +1,89 @@
+@use '../base/' as theme;
+@use '../base/function';
+@use '../base/mixins';
+@use '../base/variables' as var;
+
+.form {
+  inline-size: 100%;
+  max-inline-size: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  &__title {
+    background: theme.$linear-gradient;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    text-align: center;
+  }
+
+  &__description {
+    text-align: center;
+    max-inline-size: function.toRem(448);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    inline-size: 100%;
+    max-inline-size: function.toRem(672);
+    margin-block-start: function.toRem(40);
+    gap: function.toRem(28);
+    border: 1px solid theme.$iris-7;
+    border-radius: function.toRem(12);
+    background-color: theme.$iris-3;
+    padding-block: function.toRem(20);
+    padding-inline: function.toRem(20);
+  }
+
+  &__label {
+    font-weight: 500;
+  }
+
+  &__textarea {
+    @include mixins.input;
+    block-size: function.toRem(200);
+  }
+
+  &__input {
+    @include mixins.input;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-inline: function.toRem(12);
+    margin-block-end: function.toRem(20);
+    padding-block-start: function.toRem(32);
+    gap: function.toRem(16);
+  }
+
+  &__cancel {
+    @include mixins.button;
+    @include mixins.ruby-hover;
+    @include mixins.ruby-focus;
+    inline-size: function.toRem(160);
+    background-color: theme.$ruby-3;
+    border: 1px solid theme.$ruby-7;
+    font-family: theme.$font-stack;
+    color: theme.$ruby-12;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: var.$transition;
+  }
+
+  &__submit {
+    @include mixins.button;
+    @include mixins.jade-hover;
+    @include mixins.jade-focus;
+    inline-size: function.toRem(160);
+    background-color: theme.$jade-3;
+    border: 1px solid theme.$jade-7;
+    font-family: theme.$font-stack;
+    color: theme.$jade-12;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: var.$transition;
+  }
+}

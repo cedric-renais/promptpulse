@@ -33,7 +33,7 @@ const UserSchema = new Schema({
   },
 });
 
-// Créer un modèle pour les utilisateurs si un modèle n'existe pas déjà dans la base de données MongoDB
+// Créer un modèle pour les utilisateurs si il n'existe pas déjà dans la base de données MongoDB
 const User = models.User || model('User', UserSchema);
 
 export default User;

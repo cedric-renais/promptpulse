@@ -17,34 +17,26 @@
     gap: function.toRem(8);
     border: 1px solid transparent;
     border-radius: 50%;
-    background: theme.$iris-12;
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    padding-inline: function.toRem(2);
+    background: transparent;
+    padding-inline: function.toRem(4);
     padding-block: function.toRem(2);
 
     @media (min-width: 640px) {
       border-radius: function.toRem(8);
     }
 
-    &:hover {
-      background: theme.$linear-gradient;
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
+    &:hover .nav__logo {
+      transform: rotate(180deg);
     }
 
     &:focus {
-      background: theme.$linear-gradient;
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
+      background-color: theme.$iris-3;
     }
   }
 
   &__logo {
     object-fit: contain;
+    transition: transform 0.3s ease;
   }
 
   &__logo-text {
@@ -101,19 +93,21 @@
     @include mixins.flex-center;
     @include mixins.iris-focus;
     border: 1px solid transparent;
+    border-radius: 50%;
     padding-inline: function.toRem(2);
     padding-block: function.toRem(2);
+    transition: var.$transition;
 
     @media (min-width: 640px) {
       @include mixins.iris-hover;
+
       &:hover {
         border: 1px solid theme.$iris-7;
-        border-radius: 50%;
       }
     }
 
     &:focus {
-      border-radius: 50%;
+      background-color: theme.$iris-3;
     }
   }
 

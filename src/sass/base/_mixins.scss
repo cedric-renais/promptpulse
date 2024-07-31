@@ -48,6 +48,22 @@
   }
 }
 
+@mixin jade-hover {
+  &:hover {
+    background-color: theme.$jade-4;
+    border: 1px solid theme.$jade-8;
+  }
+}
+
+@mixin jade-focus {
+  &:focus {
+    outline: none;
+    border: 1px solid theme.$jade-8;
+    background-color: theme.$jade-4;
+    box-shadow: var.$shadow-jade;
+  }
+}
+
 @mixin button-iris {
   @include button;
   @include iris-hover;
@@ -64,4 +80,19 @@
   background-color: transparent;
   border: 1px solid theme.$iris-7;
   font-size: function.toRem(14);
+}
+
+@mixin input {
+  @include iris-focus;
+  inline-size: 100%;
+  display: flex;
+  border-radius: 0.5rem;
+  margin-block-start: 0.5rem;
+  padding-inline: 0.75rem;
+  padding-block: 0.75rem;
+  font-size: 0.85rem;
+  outline: 0;
+  border: 1px solid theme.$iris-6;
+  background-color: theme.$iris-12;
+  font-family: theme.$font-stack;
 }

@@ -47,7 +47,7 @@ const Nav = () => {
       <div className="nav__desktop">
         {session?.user ? (
           <div className="nav__user-actions">
-            <Link className="nav__create-post" href="/create-post">
+            <Link className="nav__create-post" href="/create-prompt">
               Pulse un prompt
             </Link>
             <button className="nav__sign-out" type="button" onClick={signOut}>
@@ -102,8 +102,8 @@ const Nav = () => {
           >
             <Image
               className="nav__profile-image"
-              src="/assets/images/user.svg"
-              alt="Image de profil"
+              src={session.user.image}
+              alt={`Image de profil de ${session.user.name}`}
               width={35}
               height={35}
             />
@@ -118,7 +118,7 @@ const Nav = () => {
                 </Link>
                 <Link
                   className="nav__dropdown-link"
-                  href="/create-post"
+                  href="/create-prompt"
                   onClick={() => setToggleDropdown(false)}
                 >
                   Pulse un prompt
