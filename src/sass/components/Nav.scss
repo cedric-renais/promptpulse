@@ -16,12 +16,17 @@
     @include mixins.iris-focus;
     gap: function.toRem(8);
     border: 1px solid transparent;
+    border-radius: 50%;
     background: theme.$iris-12;
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
-    padding-inline: function.toRem(4);
-    padding-block: function.toRem(4);
+    padding-inline: function.toRem(2);
+    padding-block: function.toRem(2);
+
+    @media (min-width: 640px) {
+      border-radius: function.toRem(8);
+    }
 
     &:hover {
       background: theme.$linear-gradient;
@@ -35,7 +40,6 @@
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
-      border-radius: function.toRem(8);
     }
   }
 
@@ -105,6 +109,8 @@
   &__profile-mobile {
     @include mixins.flex-center;
     border: 1px solid transparent;
+    padding-inline: function.toRem(2);
+    padding-block: function.toRem(2);
     @include mixins.iris-focus;
     &:focus {
       border-radius: 50%;

@@ -37,8 +37,8 @@ const Nav = () => {
           className="nav__logo"
           src="/assets/images/logo.svg"
           alt="Logo de PromptPulse"
-          width={30}
-          height={30}
+          width={35}
+          height={35}
         />
         <p className="nav__logo-text">PromptPulse</p>
       </Link>
