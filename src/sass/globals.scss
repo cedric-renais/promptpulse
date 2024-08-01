@@ -72,6 +72,7 @@
   &__login {
     margin-block-start: function.toRem(32);
     font-size: function.toRem(24);
+    text-align: center;
 
     span {
       background: theme.$linear-gradient;
