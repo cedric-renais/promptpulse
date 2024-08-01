@@ -1,6 +1,5 @@
 'use client';
 
-import CreatePrompt from '@components/CreatePrompt';
 import Feed from '@components/Feed';
 import { getProviders, useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
@@ -8,11 +7,6 @@ import { useEffect, useState } from 'react';
 const Home = () => {
   const { data: session } = useSession();
   const [providers, setProviders] = useState(null);
-  const [refresh, setRefresh] = useState(false);
-
-  const handlePostAdded = () => {
-    setRefresh((prev) => !prev); // Change l'état pour forcer la mise à jour du Feed
-  };
 
   useEffect(() => {
     const SetUpProviders = async () => {
@@ -22,6 +16,17 @@ const Home = () => {
     };
 
     SetUpProviders();
+  }, []);
+
+  useEffect(() => {
+    const checkPostAdded = () => {
+      if (localStorage.getItem('postAdded')) {
+        handlePostAdded();
+        localStorage.removeItem('postAdded'); // Réinitialiser l'état
+      }
+    };
+
+    checkPostAdded();
   }, []);
 
   return (
@@ -37,8 +42,7 @@ const Home = () => {
       </p>
       {session?.user ? (
         <>
-          <CreatePrompt onPostAdded={handlePostAdded} />
-          <Feed refresh={refresh} />
+          <Feed />
         </>
       ) : (
         <p className="home__login">

@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 import Form from '@components/Form';
 
-const CreatePrompt = ({ onPostAdded }) => {
+const CreatePrompt = () => {
   const router = useRouter();
   const { data: session } = useSession();
 
@@ -28,7 +28,7 @@ const CreatePrompt = ({ onPostAdded }) => {
       });
 
       if (response.ok) {
-        onPostAdded();
+        localStorage.setItem('postAdded', 'true'); // Indiquer qu'un post a été ajouté
         router.push('/');
       }
     } catch (error) {
