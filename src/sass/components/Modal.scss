@@ -1,0 +1,57 @@
+@use '../base/' as theme;
+@use '../base/function';
+@use '../base/mixins';
+@use '../base/variables' as var;
+
+.modal {
+  @include mixins.flex-center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(theme.$iris-2, 0.75);
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    background-color: theme.$iris-3;
+    border: 1px solid theme.$iris-7;
+    border-radius: function.toRem(8);
+    block-size: fit-content;
+    padding-block: function.toRem(16);
+    padding-inline: function.toRem(16);
+    gap: function.toRem(16);
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-block-start: function.toRem(16);
+    gap: function.toRem(16);
+  }
+
+  &__cancel,
+  &__confirm {
+    @include mixins.button;
+    text-transform: uppercase;
+  }
+
+  &__cancel {
+    @include mixins.ruby-focus;
+    @include mixins.ruby-hover;
+    background-color: theme.$ruby-3;
+    border: 1px solid theme.$ruby-7;
+    color: theme.$ruby-12;
+    font-weight: 600;
+  }
+
+  &__confirm {
+    @include mixins.jade-focus;
+    @include mixins.jade-hover;
+    background-color: theme.$jade-3;
+    border: 1px solid theme.$jade-7;
+    color: theme.$jade-12;
+    font-weight: 600;
+  }
+}
