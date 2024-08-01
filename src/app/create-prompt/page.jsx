@@ -28,7 +28,6 @@ const CreatePrompt = () => {
       });
 
       if (response.ok) {
-        localStorage.setItem('postAdded', 'true'); // Indiquer qu'un post a été ajouté
         router.push('/');
       }
     } catch (error) {
