@@ -7,6 +7,11 @@ import { useEffect, useState } from 'react';
 const Home = () => {
   const { data: session } = useSession();
   const [providers, setProviders] = useState(null);
+  const [refresh, setRefresh] = useState(false);
+
+  const handlePostAdded = () => {
+    setRefresh((prev) => !prev); // Change l'état pour forcer la mise à jour du Feed
+  };
 
   useEffect(() => {
     const SetUpProviders = async () => {
