@@ -1,16 +1,26 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
+import { useSession } from 'next-auth/react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 import Profile from '@components/Profile';
 import '@sass/components/Profile.scss';
 
 const UserProfile = ({ params }) => {
+  const { data: session, status } = useSession();
+  const router = useRouter();
   const searchParams = useSearchParams();
   const userName = searchParams.get('name');
 
   const [userPrompts, setUserPrompts] = useState([]);
+
+  useEffect(() => {
+    if (status === 'loading') return; // Attendre que le statut de la session soit déterminé
+    if (!session) {
+      router.push('/');
+    }
+  }, [session, status, router]);
 
   useEffect(() => {
     const fetchPosts = async () => {

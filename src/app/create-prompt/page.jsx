@@ -2,16 +2,23 @@
 
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Form from '@components/Form';
 
 const CreatePrompt = () => {
   const router = useRouter();
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
 
   const [submitting, setSubmitting] = useState(false);
   const [post, setPost] = useState({ prompt: '', tag: '' });
+
+  useEffect(() => {
+    if (status === 'loading') return; // Attendre que le statut de la session soit déterminé
+    if (!session) {
+      router.push('/');
+    }
+  }, [session, status, router]);
 
   const createPrompt = async (event) => {
     event.preventDefault();

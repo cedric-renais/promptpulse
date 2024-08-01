@@ -9,10 +9,17 @@ import Profile from '@components/Profile';
 
 const ProfilePage = () => {
   const router = useRouter();
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const [prompts, setPrompts] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPrompt, setSelectedPrompt] = useState(null);
+
+  useEffect(() => {
+    if (status === 'loading') return; // Attendre que le statut de la session soit déterminé
+    if (!session) {
+      router.push('/');
+    }
+  }, [session, status, router]);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -65,6 +72,10 @@ const ProfilePage = () => {
       setSelectedPrompt(null);
     }
   };
+
+  if (status === 'loading') {
+    return <div>Chargement...</div>;
+  }
 
   return (
     <>

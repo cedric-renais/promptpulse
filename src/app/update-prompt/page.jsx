@@ -1,17 +1,25 @@
 'use client';
 
 import Form from '@components/Form';
+import { useSession } from 'next-auth/react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Suspense, useEffect, useState } from 'react';
 
 const UpdatePrompt = () => {
   const router = useRouter();
+  const { data: session, status } = useSession();
   const searchParams = useSearchParams();
   const promptId = searchParams.get('id');
 
   const [post, setPost] = useState({ prompt: '', tag: '' });
   const [submitting, setSubmitting] = useState(false);
 
+  useEffect(() => {
+    if (status === 'loading') return; // Attendre que le statut de la session soit déterminé
+    if (!session) {
+      router.push('/');
+    }
+  }, [session, status, router]);
   useEffect(() => {
     const getPromptDetails = async () => {
       const response = await fetch(`/api/prompt/${promptId}`);
