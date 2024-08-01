@@ -26,7 +26,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
           />
         </label>
         <label className="form__label" htmlFor="tag">
-          Tag <span>(#produit, #webdev, #idée...)</span>
+          Tag <span>(#design, #webdev, #accessibilité...)</span>
           <input
             className="form__input"
             id="tag"

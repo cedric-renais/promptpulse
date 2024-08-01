@@ -26,14 +26,14 @@ const Home = () => {
         <span className="home__title--highlight">Les meilleurs Prompts</span>
       </h1>
       <p className="home__description u-desc-text">
-        PromptPulse, c'est une plateforme où tu peux découvrir, créer et
-        partager des prompts
+        PromptPulse est une plateforme où tu peux découvrir, créer et partager
+        des prompts
       </p>
       {session?.user ? (
         <Feed />
       ) : (
         <p className="home__login">
-          <span>Connecte-toi</span> pour découvrir les prompts !
+          <span>Connecte-toi</span> et rejoins la communauté.
         </p>
       )}
     </section>

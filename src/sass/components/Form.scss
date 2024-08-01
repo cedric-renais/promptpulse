@@ -44,6 +44,7 @@
   &__textarea {
     @include mixins.input;
     block-size: function.toRem(200);
+    resize: none;
   }
 
   &__input {

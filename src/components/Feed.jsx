@@ -78,6 +78,8 @@ const Feed = () => {
           <input
             className="feed__input"
             type="text"
+            id="search"
+            name="search"
             placeholder="Cherche un tag ou un nom d'utilisateur"
             value={searchText}
             onChange={handleSearchChange}

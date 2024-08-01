@@ -1,0 +1,29 @@
+@use '../base/' as theme;
+@use '../base/function';
+@use '../base/mixins';
+@use '../base/variables' as var;
+
+.profile {
+  inline-size: 100%;
+
+  &__title {
+    background: theme.$linear-gradient;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    text-align: left;
+  }
+
+  &__description {
+    text-align: left;
+  }
+
+  &__prompt-card-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-block-start: function.toRem(40);
+    padding-block: function.toRem(32);
+    gap: function.toRem(20);
+  }
+}

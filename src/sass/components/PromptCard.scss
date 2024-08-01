@@ -4,6 +4,9 @@
 @use '../base/variables' as var;
 
 .prompt-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   flex: 1;
   break-inside: avoid;
   border-radius: function.toRem(8);
@@ -92,7 +95,6 @@
   &__buttons {
     display: flex;
     justify-content: flex-end;
-    align-items: center;
     gap: function.toRem(16);
   }
 
