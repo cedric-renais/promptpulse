@@ -47,6 +47,10 @@ const ProfilePage = () => {
       );
 
       if (response.ok) {
+        const filteredPrompts = prompts.filter(
+          (item) => item._id !== selectedPrompt._id
+        );
+        setPrompts(filteredPrompts);
         await fetchPosts();
       } else {
         console.error(
