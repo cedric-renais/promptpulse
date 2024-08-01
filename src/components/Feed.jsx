@@ -2,6 +2,7 @@
 
 import '@sass/components/Feed.scss';
 
+import { useSearchParams } from 'next/navigation'; // Importer le hook pour obtenir les paramètres de la requête
 import { useEffect, useState } from 'react';
 import PromptCard from './PromptCard';
 
@@ -22,6 +23,9 @@ const PromptCardList = ({ data, handleTagClick }) => {
 const Feed = () => {
   const [allPosts, setAllPosts] = useState([]);
 
+  const searchParams = useSearchParams();
+  const refresh = searchParams.get('refresh'); // Obtenir le paramètre de requête
+
   // States pour la recherche
   const [searchText, setSearchText] = useState('');
   const [searchTimeout, setSearchTimeout] = useState(null);
@@ -36,7 +40,7 @@ const Feed = () => {
 
   useEffect(() => {
     fetchPosts();
-  }, []);
+  }, [refresh]); // Dépendre du paramètre de requête pour rafraîchir
 
   const filterPrompts = (searchtext) => {
     const regex = new RegExp(searchtext, 'i'); // (case-insensitive)

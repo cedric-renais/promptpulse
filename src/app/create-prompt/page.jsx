@@ -28,7 +28,7 @@ const CreatePrompt = () => {
       });
 
       if (response.ok) {
-        router.push('/');
+        router.push('/?refresh=' + new Date().getTime()); // Ajouter un paramètre de requête pour forcer le rafraîchissement
       }
     } catch (error) {
       console.log(error);
