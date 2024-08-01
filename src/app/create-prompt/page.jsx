@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 import Form from '@components/Form';
 
-const CreatePrompt = () => {
+const CreatePrompt = ({ onPostAdded }) => {
   const router = useRouter();
   const { data: session } = useSession();
 
@@ -28,6 +28,7 @@ const CreatePrompt = () => {
       });
 
       if (response.ok) {
+        onPostAdded();
         router.push('/');
       }
     } catch (error) {

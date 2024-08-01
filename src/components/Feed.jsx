@@ -19,7 +19,7 @@ const PromptCardList = ({ data, handleTagClick }) => {
   );
 };
 
-const Feed = () => {
+const Feed = ({ refresh }) => {
   const [allPosts, setAllPosts] = useState([]);
 
   // States pour la recherche
@@ -36,7 +36,7 @@ const Feed = () => {
 
   useEffect(() => {
     fetchPosts();
-  }, []);
+  }, [refresh]);
 
   const filterPrompts = (searchtext) => {
     const regex = new RegExp(searchtext, 'i'); // (case-insensitive)
