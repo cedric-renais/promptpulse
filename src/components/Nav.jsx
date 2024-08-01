@@ -7,27 +7,22 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 const Nav = () => {
-  // Indique si l'utilisateur est connecté ou non (à remplacer par la vraie valeur)
   const { data: session } = useSession();
-
-  // Liste des fournisseurs d'authentification
   const [providers, setProviders] = useState(null);
-
-  // Toggle le dropdown du menu mobile
   const [toggleDropdown, setToggleDropdown] = useState(false);
 
-  // Récupère la liste des fournisseurs d'authentification
   useEffect(() => {
     const fetchProviders = async () => {
       const response = await getProviders();
-
-      // Met à jour la liste des fournisseurs d'authentification
       setProviders(response);
     };
 
-    // Appelle la fonction pour récupérer les fournisseurs d'authentification
     fetchProviders();
   }, []);
+
+  const handleSignOut = () => {
+    signOut({ redirect: true, callbackUrl: '/' });
+  };
 
   return (
     <nav className="nav">
@@ -50,7 +45,11 @@ const Nav = () => {
             <Link className="nav__create-post" href="/create-prompt">
               Pulse un prompt
             </Link>
-            <button className="nav__sign-out" type="button" onClick={signOut}>
+            <button
+              className="nav__sign-out"
+              type="button"
+              onClick={handleSignOut}
+            >
               Déconnecte-toi
             </button>
             <Link className="nav__profile" href="/profile">
@@ -96,7 +95,6 @@ const Nav = () => {
               }
             }}
             onBlur={(event) => {
-              // Vérifiez si le nouvel élément de focus est en dehors du dropdown
               if (!event.currentTarget.contains(event.relatedTarget)) {
                 setToggleDropdown(false);
               }
@@ -130,7 +128,7 @@ const Nav = () => {
                   type="button"
                   onClick={() => {
                     setToggleDropdown(false);
-                    signOut();
+                    handleSignOut();
                   }}
                 >
                   Déconnecte-toi
@@ -157,4 +155,5 @@ const Nav = () => {
     </nav>
   );
 };
+
 export default Nav;
